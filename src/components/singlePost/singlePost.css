@@ -1,0 +1,34 @@
+.singlePost{
+    flex: auto;
+   
+}
+.singlePostImg{
+    width: 100%;
+    height: 50%; 
+    border-radius:5px 
+}
+
+.singlePostWrapper{
+ 
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.singlePostTitle{
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0px;
+    font-family: 'PT Serif', serif;
+}
+
+.singlePostAction{
+    float: right;
+}
+
+.singlePostIcon{
+    margin-left: 10px;
+    cursor: pointer;
+    color: rgb(247, 118, 6);
+}

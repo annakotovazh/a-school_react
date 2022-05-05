@@ -1,0 +1,91 @@
+
+.login{
+    width: 100%;
+    height: calc(100vh - 250px);
+    align-items:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*background: linear-gradient(rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+    ),
+     url(./../../images/white-keyboard.jpg);
+    background-size: cover;*/
+    
+}
+.topLeft, .topRight {
+    margin-top: 20px;
+    flex: 3 1;
+    display: flex;
+    align-items: center;
+
+}
+
+.form-check-input {
+    border: 1px solid #039e10;
+ 
+}
+.form-check-input:checked {
+    background-color: #0c0c0c;
+    border-color: #0fac07;
+}
+.form-control {
+   border: 1px solid #039e10;
+  
+}
+   .btn-primary {
+       color: #fff;
+       background-color: #03790d;
+       border-color: #03790d;
+   }
+   .btn-outline-success {
+       color: #039e10;
+       border-color: #039e10;
+   }
+   .fa-magnifying-glass:before, .fa-search:before{
+       color:#039e10;
+   }
+
+.loginTitle{
+    font-size: 40px;
+}
+.loginForm{
+   width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.loginForm >label{
+    margin: 10px 0;
+}
+.loginInput{
+    padding: 10px;
+    background-color:white;
+    border-radius:7px;
+    border:1px solid;
+    border-color: grey;
+}
+.loginButton{
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color:rgb(3, 143, 26);
+    border-radius:7px;
+    border:1px solid;
+    border-color: grey;
+    color: white;
+}
+.loginRegisterButton{
+position: absolute;
+width: 70px;
+top:120px;
+right: 20px;
+background-color:orange;
+cursor: pointer;
+padding:5px;
+color:white;
+border:0.5px solid;
+border-color: rgb(158, 156, 156);
+border-radius:5px;
+}

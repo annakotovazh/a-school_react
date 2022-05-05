@@ -1,0 +1,98 @@
+.settings{
+    display: flex;
+    flex-direction: column;
+
+}
+.topLeft, .topRight {
+    margin-top: 20px;
+    flex: 3 1;
+    display: flex;
+    align-items: center;
+}
+.settingsWrapper{
+    flex:auto;
+    padding: 20px;
+}
+.settingsPPImg{
+    width: 70px;
+    height: 70px;
+    border-color:white;
+    border:0.5px solid;
+    border-radius:10px;
+    object-fit: cover;
+}
+.settingsTitle{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.settingsUpdateTitle{
+    font-size: 25px;
+    margin-bottom: 20px;
+    color:gray
+}
+.settingsDeleteTitle{
+    font-size: 18px;
+    color:orange;
+    cursor: pointer;
+}
+.settingsForm{
+    display: flex;
+    flex-direction: column;
+
+}
+.settingsPP{
+    display: flex;
+    align-items:center;
+    margin: 10px 0;
+}
+.settingsPPIcon{
+    width: 25px;
+    height: 25px;
+    border-radius:10px;
+    background-color:orange;
+    color:white;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.settingsForm > label{
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.settingsForm > input{
+    color:gray;
+    background-color:white;
+    margin: 1px 0;
+    height: 40px;
+    border-radius:7px;
+}
+.settingsSubmit{
+
+    align-items:center;
+    border-radius:7px;
+    color:white;
+    background-color:rgb(3, 143, 26);
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    border:none;
+    display: flex;
+    justify-content: center;
+}
+.settingsDeleteAccount{
+    align-items:center;
+    border-radius:7px;
+    color:white;
+    background-color:orange;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    border:none;
+    display: flex;
+    justify-content: center;
+}
