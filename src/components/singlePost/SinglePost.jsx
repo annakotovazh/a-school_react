@@ -1,30 +1,21 @@
 import "./singlePost.css"
 
-export default function SinglePost() {
-    const singlePostImg = require('./../../images/' + 'reading-book.jpg');
+export default function SinglePost({ item }) {
+    const {title, description, dateCreated} = item;
+    const schoolClassImg = require('./../../images/' + 'kids_handsup.jpg');
   return (
-    <div className="singlePost">
-          <div className="singlePostWrapper">
-              <img className="singlePostImg" src={singlePostImg} alt="teacher reading book" />
-              <h className="singlePostTitle">Lorem ipsum dolor, sit
-                  <div className="singlePostAction">
-
-                      <i className="singlePostIcon fa-regular fa-heart"></i>
-                      <i className="singlePostIcon fa-regular fa-circle-down"></i>
-
-                  </div>
-              </h>
-              <div className="singlePostInfo">
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Nisi minima doloremque non nemo enim magni dolores earum
-          consectetur, ab deleniti sed veniam doloribus!  
-                      consectetur, ab deleniti sed veniam doloribus!  
-                      consectetur, ab deleniti sed veniam doloribus!  
-                      consectetur, ab deleniti sed veniam doloribus!  
-                      consectetur, ab deleniti sed veniam doloribus! </p>  
-                  <span className="singlePostDate">21/04/2022</span>
-              </div>
-          </div>
+    <div className="schoolClassItem">
+    <img className="schoolClassImg" src={schoolClassImg} alt="kids with teacher" />
+    <div className="schoolClassPostInfo">
+              <div className="schoolClassPostTitle">{title}</div>
+      <div className="schoolClassPostText">
+      
+                  <p>{description}</p>
+      </div>
     </div>
+    <div className="schoolClassPostDate">
+              <span className="skcPostDate">Date: {dateCreated}</span>
+    </div>
+  </div>
   )
 }

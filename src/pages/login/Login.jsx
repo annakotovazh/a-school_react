@@ -1,14 +1,14 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import "./login.css"
+import "./login.css";
 import Spinner from "../../components/helpercomponents/Spinner";
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 export default function Login({ setToken }) {
 
   const navigate = useNavigate();
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -26,7 +26,7 @@ export default function Login({ setToken }) {
       body: JSON.stringify({email, password})
     }).then(response => {
       if (!response.ok) {
-        if (response.status == 401) {
+        if (response.status === 401) {
           throw new Error('An error has occured: Invalid email or password.' )
         }
         else {
@@ -36,7 +36,6 @@ export default function Login({ setToken }) {
         return response.json();
       }
     }).then(data => {
-      console.log(data)
       setToken(data);
       setLoading(false);
       navigate('/');

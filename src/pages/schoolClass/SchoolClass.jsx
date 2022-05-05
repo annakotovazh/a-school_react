@@ -1,43 +1,55 @@
-import "./schoolClass.css"
+import {React, useState, useEffect} from "react";
+import "./schoolClass.css";
+import Spinner from "../../components/helpercomponents/Spinner";
+import SinglePost from "../../components/singlePost/SinglePost";
 
-export default function schoolClass() {
-  const schoolClassImg = require('./../../images/' + 'kids_handsup.jpg');
-
+export default function SchoolClass() {
   
-  return (
-    <div className="schoolClass">
-         <div className="schoolClassItem">
-        <img className="schoolClassImg" src={schoolClassImg} alt="kids with teacher" />
-        <div className="schoolClassPostInfo">
-          <div className="schoolClassPostTitle">TITLE</div>
-          <div className="schoolClassPostText">
-            
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Nisi minima doloremque non nemo enim magni dolores earum
-          consectetur, ab deleniti sed veniam doloribus!  
-              consectetur, ab deleniti sed veniam doloribus! </p>  
-              </div>
-        </div>
-      <div className="schoolClassPostDate">
-             <span className="skcPostDate">Date: 11/03/2022</span>
-          </div>
+  const [isLoading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if(posts !== []){
+        setLoading(false);
+    }
+  }, [posts])
+  
+  useEffect(() => {
+    setLoading(true)
+    fetch('http://localhost:3000/posts', {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+          'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if(!response.ok){
+            throw new Error('The following error has occured: ' + response.statusText)
+        } else {
+            return response.json()
+        }
+    }).then(data => {
+      setPosts(data);
+    }).catch(error => {
+        alert(error)
+        setLoading(false)
+    })
+}, [])
+  
+  if (isLoading) {
+    return <Spinner />
+  } else {
+    return (
+      <div className="schoolClass">
+
+          {posts.map((post, i) => (
+                        <SinglePost key={i} item={post} />
+                    ))}
+
+
       </div>
-      <div className="schoolClassItem">
-        <img className="schoolClassImg" src={schoolClassImg} alt="girl reading book" />
-        <div className="schoolClassPostInfo">
-          <div className="schoolClassPostTitle">TITLE</div>
-          <div className="schoolClassPostText">
-            
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Nisi minima doloremque non nemo enim magni dolores earum
-          consectetur, ab deleniti sed veniam doloribus!  
-              consectetur, ab deleniti sed veniam doloribus! </p>  
-              </div>
-        </div>
-      <div className="schoolClassPostDate">
-             <span className="skcPostDate">Date: 11/03/2022</span>
-          </div>
-        </div>
-    </div>
-  )
+    )
+  }
 }
