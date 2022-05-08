@@ -1,5 +1,5 @@
 import Header from "../../components/header/Header";
-import Posts from "../../components/posts/Posts";
+import Announcements from "../../components/announcements/Announcements";
 
 
 /*import Sidebar from "../../components/sidebar/Sidebar";*/
@@ -10,13 +10,12 @@ export default function Home() {
   //  return <Navigate to="/login" />
   //return <Login setToken={setToken} />
   //}
-
-
+  
   return (
     <>
     <Header />
       <div className="home">
-          <Posts />
+          <Announcements />
         { /*<Sidebar />*/}
       </div>
         </>

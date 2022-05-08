@@ -17,7 +17,7 @@ export default function AddPost() {
         }
     }, [post])
     
-    function HandleSubmit(e){
+    const HandleSubmit = async e =>{
         e.preventDefault();
         setLoading(true)
 
@@ -25,11 +25,24 @@ export default function AddPost() {
     
         // input validation required
         let title = e.target.txtTitle.value;
-        let description = e.target.txtDescription.value;
-        let imagePath = '';
+      let description = e.target.txtDescription.value;
+           let imagePath = '';
 
-        console.log(JSON.stringify({ title, description, imagePath }));
-        
+      await new Promise(f => setTimeout(f, 500));
+      
+      const formElem = document.getElementById('uploadForm');
+
+        e.preventDefault();
+        const res = await fetch('http://localhost:3000/files', {
+          method: 'POST',
+          body: new FormData(e.target),
+        });
+      const body = await res.json();
+      console.log(body);
+
+      if (body.files && body.files.length > 0) { 
+        imagePath = body.files[0].originalname;
+      }
         fetch('http://localhost:3000/posts', {
           method: 'POST',
           headers:{
@@ -63,7 +76,7 @@ export default function AddPost() {
                         <label htmlFor="fileInput">
                             <i className="addPostIcon fa-solid fa-plus"></i>
                         </label>
-                        <input type="file" id="fileInput" style={{ display: "none" }} />
+                        <input type="file" id="files" name="files" />
                         <input type="text"
                             placeholder="Title"
                             className="addPostInput"

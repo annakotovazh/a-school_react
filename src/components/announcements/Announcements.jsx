@@ -1,23 +1,23 @@
 import {React, useState, useEffect} from "react";
-import "./schoolClass.css";
+import "./announcements.css";
 import Spinner from "../../components/helpercomponents/Spinner";
-import SinglePost from "../../components/singlePost/SinglePost";
+import SingleAnnouncement from "../singleAnnouncement/SingleAnnouncement";
 
-export default function SchoolClass() {
+export default function Announcements() {
   
   const [isLoading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
+  const [announcements, setAnnouncements] = useState([]);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    if(posts !== []){
+    if(announcements !== []){
         setLoading(false);
     }
-  }, [posts])
+  }, [announcements])
   
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:3000/posts', {
+    fetch('http://localhost:3000/announcements?filter={"where":{"isActive":true},"order":"announcementId desc"}', {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + token,
@@ -31,7 +31,7 @@ export default function SchoolClass() {
             return response.json()
         }
     }).then(data => {
-      setPosts(data);
+      setAnnouncements(data);
     }).catch(error => {
         alert(error)
         setLoading(false)
@@ -42,10 +42,10 @@ export default function SchoolClass() {
     return <Spinner />
   } else {
     return (
-      <div className="schoolClass">
+      <div className="announcements">
 
-          {posts.map((post, i) => (
-                        <SinglePost key={i} item={post} />
+          {announcements.map((announcement, i) => (
+                        <SingleAnnouncement key={i} item={announcement} />
                     ))}
 
 
@@ -53,3 +53,4 @@ export default function SchoolClass() {
     )
   }
 }
+

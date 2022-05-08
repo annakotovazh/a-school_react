@@ -31,10 +31,12 @@
 }
 .form-control {
    border: 1px solid #039e10;
+   height: 45px;
+   border-radius:7px
   
 }
    .btn-primary {
-       color: #fff;
+
        background-color: #03790d;
        border-color: #03790d;
    }
@@ -59,13 +61,7 @@
 .loginForm >label{
     margin: 10px 0;
 }
-.loginInput{
-    padding: 10px;
-    background-color:white;
-    border-radius:7px;
-    border:1px solid;
-    border-color: grey;
-}
+
 .loginButton{
     padding: 10px;
     margin-top: 20px;
@@ -74,7 +70,6 @@
     border-radius:7px;
     border:1px solid;
     border-color: grey;
-    color: white;
 }
 .loginRegisterButton{
 position: absolute;

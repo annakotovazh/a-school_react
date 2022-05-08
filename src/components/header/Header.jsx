@@ -1,4 +1,5 @@
 import "./header.css";
+import { Link } from 'react-router-dom';
 
 export default function Header() {
     const headerImg = require('./../../images/' + 'hands.jpg');
@@ -6,8 +7,9 @@ export default function Header() {
     <div className="header">
        
           <div className="headerTitles">
-          <img className="headerImg" src={headerImg} alt="hands on grass" />
-            <span className="headerTitlesLg">A-School</span>
+        <img className="headerImg" src={headerImg} alt="hands on grass" />
+        <Link to='/' className="headerTitlesLg">A-School</Link>
+
           </div>
       
      

@@ -16,7 +16,7 @@ export default function Login({ setToken }) {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(f => setTimeout(f, 1000));
+    await new Promise(f => setTimeout(f, 500));
     fetch('http://localhost:3000/user/login', {
       method: 'POST',
       headers: {
@@ -50,7 +50,9 @@ export default function Login({ setToken }) {
   const token = localStorage.getItem('token');
   
   if (token) {
+    console.log('LOGOUT');
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     //navigate('/');
     window.location.pathname = '/';
   }
@@ -64,17 +66,22 @@ export default function Login({ setToken }) {
         <form className="loginForm" onSubmit={handleSubmit}>
           <span className="loginTitle">Login</span>
           <label>Email</label>
-          <section class="input-container">
-                <i class="fa fa-user icon"></i>
-                <input className="input-field" id="fname" type="text" placeholder="First Name" name="lstnm" required
-                    pattern="[A-Za-z]{2,}$" title="Lettrs only" maxlength="32"
-                    oninput="checkInput('fname', 'fnameError')"/>
-                <div class="error" id="fnameError">Please match the format requested.</div>
-            </section>
-          <input className="loginInput" type="email" required placeholder="Enter your email" onChange={e => setEmail(e.target.value)} />
-          <i class="fa fa-user icon"></i>
+          <div className="main">
+          <div className="form-group">
+          <label>Email</label>
+    <span className="fa fa-envelope form-control-icon"></span>
+              <input type="email" className="form-control"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter your email" />
+  </div> 
+          
+          <div className="form-group">
           <label>Password</label>
-          <input className="loginInput" type="password" required placeholder="Enter your password" onChange={e => setPassword(e.target.value)} />
+    <span className="fa fa-key form-control-icon"></span>
+              <input type="text" className="form-control" pattern=".{8,}" placeholder="Enter your password"
+                onChange={e => setPassword(e.target.value)} />
+            </div> 
+            </div>
+         
           <button className="loginButton" type="submit">Login</button>
               
         </form>
