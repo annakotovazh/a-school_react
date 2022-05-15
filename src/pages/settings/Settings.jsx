@@ -1,34 +1,106 @@
-import "./settings.css"
+import {React, useState, useEffect} from "react";
+import Spinner from "../../components/helpercomponents/Spinner";
+import "./settings.css";
+
 
 export default function Settings() {
-    const settingsPPImg = require('./../../images/' + 'teacher.jpg');
-  return (
-    <div className="settings">
-          <div className="settingsWrapper">
-              <div className="settingsTitle">
-                  <span className="settingsUpdateTitle">Update Your Account</span>
+  const settingsPPImg = require('./../../images/' + 'teacher.jpg');
+  
+  const [isLoading, setLoading] = useState(false);
+const [userProfile, setUserProfile] = useState([]);
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  if (!user?.id) { 
+    window.location.pathname = '/';;
+  }
+
+useEffect(() => {
+  if(userProfile !== []){
+      setLoading(false);
+  }
+}, [userProfile])
+  
+useEffect(() => {
+  setLoading(true);
+  fetch(`http://localhost:3000/user-profiles/${user.id}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Access-Control-Allow-Origin': '*',
+          'Accept': 'application/json'
+      }
+  }).then(response => {
+      if(!response.ok){
+          throw new Error('The following error has occured: ' + response.statusText)
+      } else {
+          return response.json()
+      }
+  }).then(data => {
+    setUserProfile(data);
+  }).catch(error => {
+      alert(error)
+      setLoading(false)
+  })
+}, [])
+  
+  if (isLoading) {
+    return <Spinner />
+  } else {
+    return (
+      <div className="settings">
+        <div className="settingsWrapper">
+          <div className="settingsTitle">
+            <span className="settingsUpdateTitle">Update Your Account</span>
                   
-              </div>
-              <form className="settingsForm">
-                  <div className="settingsPP">
-                      <img className="settingsPPImg" src={settingsPPImg} alt="teacher" />
-                      <label htmlFor="fileInput">
-                      <i className="settingsPPIcon fa-regular fa-user"></i>
-                      </label>
-                      <input type="file" id="fileInput" style={{display:"none"}}></input>
-                  </div>
-                  <label>Username</label>
-                  <input type="text" placeholder="Anna" />
-                  <label>Email</label>
-                  <input type="email" placeholder="anna@gmail.com" />
-                  <label>Password</label>
-                  <input type="password" />
-                  <button className="settingsSubmit">Update</button>
-                  <button className="settingsDeleteAccount">Delete Account</button>
-                  
-                 </form> 
+          </div>
+          <form className="settingsForm">
+            <div className="settingsPP">
+              <img className="settingsPPImg" src={settingsPPImg} alt="teacher" />
+              <label htmlFor="fileInput">
+                <i className="settingsPPIcon fa-regular fa-user"></i>
+              </label>
+              <input type="file" id="fileInput" style={{ display: "none" }}></input>
+            </div>
+                 
+            <div className="form-group">
+              <label>First Name</label>
+              <span className="fa fa-user form-control-icon"></span>
+              <input type="text" className="form-control"
+                pattern="[A-Za-z0-9_]{1,15}" required
+                placeholder="Enter your first name" id="firstName" name="firstName" autoFocus={true} value={userProfile.firstName} />
+            </div>
+
+            <div className="form-group">
+              <label>Last Name</label>
+              <span className="fa fa-user form-control-icon"></span>
+              <input type="text" className="form-control"
+                pattern="[A-Za-z0-9_]{1,15}" required
+                placeholder="Enter your last name" id="lastName" name="lastName" value={userProfile.lastName} />
+            </div>
+
+            <div className="form-group">
+              <label>Email</label>
+              <span className="fa fa-envelope form-control-icon"></span>
+              <input type="text" className="form-control" required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                placeholder="Enter your email" id="email" name="email" value={userProfile.email} />
+            </div>
           
-          </div>
-          </div>
-  )
+            <div className="form-group">
+              <label>Password</label>
+              <span className="fa fa-key form-control-icon"></span>
+              <input type="password" className="form-control"
+                pattern=".{8,}" required
+                placeholder="Enter your password" id="password" name="password" />
+            </div>
+            <button className="settingsSubmit" type="submit">Update</button>
+
+                  
+          </form>
+          
+        </div>
+      </div>
+    )
+  }
 }

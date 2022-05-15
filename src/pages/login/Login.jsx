@@ -71,13 +71,16 @@ export default function Login({ setToken }) {
           <label>Email</label>
     <span className="fa fa-envelope form-control-icon"></span>
               <input type="email" className="form-control"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter your email" />
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                placeholder="Enter your email" required
+                onChange={e => setEmail(e.target.value)}/>
   </div> 
           
           <div className="form-group">
           <label>Password</label>
     <span className="fa fa-key form-control-icon"></span>
-              <input type="text" className="form-control" pattern=".{8,}" placeholder="Enter your password"
+              <input type="password" className="form-control" required
+                pattern=".{8,}" placeholder="Enter your password"
                 onChange={e => setPassword(e.target.value)} />
             </div> 
             </div>

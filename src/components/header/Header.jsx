@@ -6,7 +6,8 @@ export default function Header() {
   return (
     <div className="header">
        
-          <div className="headerTitles">
+      <div className="headerTitles">
+        
         <img className="headerImg" src={headerImg} alt="hands on grass" />
         <Link to='/' className="headerTitlesLg">A-School</Link>
 

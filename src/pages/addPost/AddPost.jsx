@@ -4,7 +4,7 @@ import "./addPost.css";
 import Spinner from "../../components/helpercomponents/Spinner";
 
 export default function AddPost() {
-    const addPostImg = require('./../../images/' + 'girl-red-hair.jpg');
+    const addPostImg = require('./../../images/girl-red-hair.jpg');
     const navigate = useNavigate();
     const [isLoading, setLoading] = useState(false);
     const [post, setPost] = useState(null);
@@ -24,13 +24,11 @@ export default function AddPost() {
 
     
         // input validation required
-        let title = e.target.txtTitle.value;
+      let title = e.target.txtTitle.value;
       let description = e.target.txtDescription.value;
-           let imagePath = '';
+      let imagePath = '';
 
       await new Promise(f => setTimeout(f, 500));
-      
-      const formElem = document.getElementById('uploadForm');
 
         e.preventDefault();
         const res = await fetch('http://localhost:3000/files', {
@@ -73,10 +71,10 @@ export default function AddPost() {
                 <img className="addPostImg" src={addPostImg} alt="girl reading book" />
                 <form className="addPostForm" onSubmit={HandleSubmit}>
                     <div className="addPostGroup">
-                        <label htmlFor="fileInput">
+                        <label htmlFor="files">
                             <i className="addPostIcon fa-solid fa-plus"></i>
                         </label>
-                        <input type="file" id="files" name="files" />
+                        <input type="file" id="files" name="files" style={{ display: "none" }} />
                         <input type="text"
                             placeholder="Title"
                             className="addPostInput"

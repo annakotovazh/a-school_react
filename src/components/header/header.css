@@ -21,8 +21,8 @@
 }
 
 .headerTitlesLg{
-    position: absolute;
-    top: 27%;
+  
+    margin-top: -20%;
     font-size: 50px;
     color:white;
    

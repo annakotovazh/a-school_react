@@ -11,7 +11,7 @@ export default function SinglePost({ item }) {
     if (img) {
       setLoading(false);
     }
-  }, []);
+  }, [img]);
   
   
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function SinglePost({ item }) {
     setImg(require('./../../images/' + 'kids_handsup.jpg'));
     }
   }
-  , [])
+  , [imagePath])
 
 
   if (isLoading) {
