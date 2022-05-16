@@ -65,7 +65,6 @@ export default function Login({ setToken }) {
         <button className="loginRegisterButton" onClick={() => window.location.pathname = '/register'}>Register</button>
         <form className="loginForm" onSubmit={handleSubmit}>
           <span className="loginTitle">Login</span>
-          <label>Email</label>
           <div className="main">
           <div className="form-group">
           <label>Email</label>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import UseToken from '../../useToken';
 
 export default function topbar({SwitchTheme}) {
-  const topImg = require('./../../images/' + 'teacher.jpg');
+  const topImg = require('./../../images/' + 'user-icon-grey.jpeg');
   const { token, setToken } = UseToken();
   return (
     <div className='container' >
@@ -53,7 +53,7 @@ export default function topbar({SwitchTheme}) {
   </div>
 </nav>
           <div className="topRight">
-        <img className="topImg" src={topImg} alt="woman" />
+        <img className="topImg" src={topImg} alt="user icon" />
           
           </div>
     </div>

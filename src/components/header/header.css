@@ -20,13 +20,11 @@
 
 }
 
-.headerTitlesLg{
-  
-    margin-top: -20%;
+.headerTitlesLg {
+    margin-top: -67%;
+    padding: 97px;
     font-size: 50px;
-    color:white;
-   
-   
+    color: white;
 }
 
 .headerImg{
