@@ -17,7 +17,7 @@ export default function Announcements() {
   
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:3000/announcements?filter={"where":{"isActive":true},"order":"announcementId desc"}', {
+    fetch(`${process.env.REACT_APP_API_BASE}/announcements?filter={"where":{"isActive":true},"order":"announcementId desc"}`, {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + token,

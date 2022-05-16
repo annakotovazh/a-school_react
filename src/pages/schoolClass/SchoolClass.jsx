@@ -17,7 +17,7 @@ export default function SchoolClass() {
   
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:3000/posts', {
+    fetch(`${process.env.REACT_APP_API_BASE}/posts`, {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + token,

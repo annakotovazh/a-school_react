@@ -31,7 +31,7 @@ export default function AddPost() {
       await new Promise(f => setTimeout(f, 500));
 
         e.preventDefault();
-        const res = await fetch('http://localhost:3000/files', {
+        const res = await fetch(`${process.env.REACT_APP_API_BASE}/files`, {
           method: 'POST',
           body: new FormData(e.target),
         });
@@ -41,7 +41,7 @@ export default function AddPost() {
       if (body.files && body.files.length > 0) { 
         imagePath = body.files[0].originalname;
       }
-        fetch('http://localhost:3000/posts', {
+        fetch(`${process.env.REACT_APP_API_BASE}/posts`, {
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',

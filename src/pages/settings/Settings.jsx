@@ -23,7 +23,7 @@ useEffect(() => {
   
 useEffect(() => {
   setLoading(true);
-  fetch(`http://localhost:3000/user-profiles/${user.id}`, {
+  fetch(`${process.env.REACT_APP_API_BASE}/user-profiles/${user.id}`, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + token,

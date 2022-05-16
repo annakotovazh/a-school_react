@@ -17,7 +17,7 @@ export default function Login({ setToken }) {
     e.preventDefault();
     setLoading(true);
     await new Promise(f => setTimeout(f, 500));
-    fetch('http://localhost:3000/user/login', {
+    fetch(`${process.env.REACT_APP_API_BASE}/user/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

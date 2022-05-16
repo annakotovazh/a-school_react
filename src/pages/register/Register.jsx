@@ -22,7 +22,7 @@ export default function Register() {
     let email = e.target.email.value;
     let password = e.target.password.value;
 
-    fetch('http://localhost:3000/user-profiles', {
+    fetch(`${process.env.REACT_APP_API_BASE}/user-profiles`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
