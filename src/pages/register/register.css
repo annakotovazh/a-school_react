@@ -100,11 +100,11 @@
 .registerLoginButton{
 position: absolute;
 width: 70px;
-top:120px;
+top:100px;
 right: 20px;
 background-color:orange;
 cursor: pointer;
-padding:5px;
+padding:10px;
 color:white;
 border:0.5px solid;
 border-color: rgb(158, 156, 156);
