@@ -22,7 +22,7 @@ export default function Announcements() {
         headers: {
           'Authorization': 'Bearer ' + token,
           'Access-Control-Allow-Origin': '*',
-            'Accept': 'application/json'
+          'Accept': 'application/json'
         }
     }).then(response => {
         if(!response.ok){

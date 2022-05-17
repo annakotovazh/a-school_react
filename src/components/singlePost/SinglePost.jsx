@@ -19,7 +19,7 @@ export default function SinglePost({ item }) {
       fetch(`${process.env.REACT_APP_API_BASE}/files/${imagePath}`, {
         method: 'GET',
         headers: {
-          //'Authorization': 'Bearer ' + token,
+          'Authorization': 'Bearer ' + token,
           'Access-Control-Allow-Origin': '*',
           'Accept': 'application/json'
         }
