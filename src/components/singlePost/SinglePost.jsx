@@ -5,6 +5,7 @@ export default function SinglePost({ item }) {
   let { title, description, dateCreated, imagePath } = item;
   const [img, setImg] = useState('');
   const [isLoading, setLoading] = useState(false);
+  const token = localStorage.getItem('token');
 
   
   useEffect(() => {
