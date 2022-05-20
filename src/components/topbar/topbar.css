@@ -30,6 +30,11 @@
     color: #444;
     cursor: pointer;
 }
+
+.logoImg{
+    height: 40px;
+}
+
 .topCentre{
     flex: 6;
 }

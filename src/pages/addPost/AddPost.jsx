@@ -78,7 +78,6 @@ export default function AddPost() {
                         <input type="text"
                             placeholder="Title"
                             className="addPostInput"
-                            autoFocus={true}
                             autoComplete="New Post"
                             name="txtTitle"
                             id="txtTitle" />

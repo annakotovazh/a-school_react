@@ -2,13 +2,15 @@ import "./topbar.css";
 import { Link } from 'react-router-dom';
 import UseToken from '../../useToken';
 
-export default function topbar({SwitchTheme}) {
+export default function topbar({ SwitchTheme }) {
+  const logo = require('./../../images/' + 'icon-192x192.png');
   const topImg = require('./../../images/' + 'user-icon-grey.jpeg');
   const { token, setToken } = UseToken();
   return (
     <div className='container' >
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
+        <img className="logoImg" src={logo} alt="A-SCHOOL" />
         <Link to='/' className="navbar-brand">A-SCHOOL</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -21,7 +23,7 @@ export default function topbar({SwitchTheme}) {
           <Link to='/' className="nav-link">Home</Link>
                 <Link to='/addpost' className="nav-link">Add Post</Link>
                 {(token)? <Link to='/login' className="nav-link">Logout</Link> : <Link to='/login' className="nav-link">Login</Link>}
-                <Link to='/settings' className="nav-link">Settings</Link>
+                <Link to='/settings' className="nav-link">Profile Settings</Link>
                 <Link to='/schoolclass' className="nav-link">Class</Link>
         </li>
        
