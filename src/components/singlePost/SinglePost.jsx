@@ -13,31 +13,31 @@ export default function SinglePost({ item }) {
 
 
   const handleDelete = async (e, id) => {
-    console.log(id);
-    if (id) {
-      fetch(`${process.env.REACT_APP_API_BASE}/posts/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': 'Bearer ' + user.token,
-          'Content-Type': 'application/json'
-        }
-      }).then(response => {
-        if (!response.ok) {
-          if (response.status === 401) {
-            throw new Error('An error has occured: Invalid email or password.')
+    if (window.confirm('Delete post?')) {
+      if (id) {
+        fetch(`${process.env.REACT_APP_API_BASE}/posts/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': 'Bearer ' + user.token,
+            'Content-Type': 'application/json'
           }
-          else {
-            throw new Error('An error has occured: ' + response.statusText)
+        }).then(response => {
+          if (!response.ok) {
+            if (response.status === 401) {
+              throw new Error('An error has occured: Invalid email or password.')
+            }
+            else {
+              throw new Error('An error has occured: ' + response.statusText)
+            }
+          } else {
+            window.location.pathname = '/schoolclass';
+            //navigate('/schoolclass');
           }
-        } else {
-          window.location.pathname = '/schoolclass';
-          //navigate('/schoolclass');
-        }
-      }).catch(error => {
-        alert(error);
-      })
+        }).catch(error => {
+          alert(error);
+        })
+      }
     }
-
   }
 
   useEffect(() => {
