@@ -20,14 +20,13 @@ export default function Login({ setToken }) {
     fetch(`${process.env.REACT_APP_API_BASE}/user/login`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin':'*'
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({email, password})
+      body: JSON.stringify({ email, password })
     }).then(response => {
       if (!response.ok) {
         if (response.status === 401) {
-          throw new Error('An error has occured: Invalid email or password.' )
+          throw new Error('An error has occured: Invalid email or password.')
         }
         else {
           throw new Error('An error has occured: ' + response.statusText)
@@ -44,11 +43,11 @@ export default function Login({ setToken }) {
       alert(error);
     })
 
-    
+
   }
 
   const token = localStorage.getItem('token');
-  
+
   if (token) {
     console.log('LOGOUT');
     localStorage.removeItem('token');
@@ -56,7 +55,7 @@ export default function Login({ setToken }) {
     //navigate('/');
     window.location.pathname = '/';
   }
-  
+
   if (isLoading) {
     return <Spinner />
   } else {
@@ -66,28 +65,28 @@ export default function Login({ setToken }) {
         <form className="loginForm" onSubmit={handleSubmit}>
           <span className="loginTitle">Login</span>
           <div className="main">
-          <div className="form-group">
-          <label>Email</label>
-    <span className="fa fa-envelope form-control-icon"></span>
+            <div className="form-group">
+              <label>Email</label>
+              <span className="fa fa-envelope form-control-icon"></span>
               <input type="email" className="form-control"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 placeholder="Enter your email" required
-                onChange={e => setEmail(e.target.value)}/>
-  </div> 
-          
-          <div className="form-group">
-          <label>Password</label>
-    <span className="fa fa-key form-control-icon"></span>
+                onChange={e => setEmail(e.target.value)} />
+            </div>
+
+            <div className="form-group">
+              <label>Password</label>
+              <span className="fa fa-key form-control-icon"></span>
               <input type="password" className="form-control" required
                 pattern=".{8,}" placeholder="Enter your password"
                 onChange={e => setPassword(e.target.value)} />
-            </div> 
             </div>
-         
+          </div>
+
           <button className="loginButton" type="submit">Login</button>
-              
+
         </form>
-          
+
       </div>
     )
   }

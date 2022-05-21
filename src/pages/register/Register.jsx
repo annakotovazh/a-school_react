@@ -7,11 +7,11 @@ export default function Register() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if(user !== null){
+    if (user !== null) {
       setLoading(false);
       window.location.pathname = '/';
     }
-}, [user])
+  }, [user])
 
   const HandleSubmit = async e => {
     e.preventDefault();
@@ -25,14 +25,13 @@ export default function Register() {
     fetch(`${process.env.REACT_APP_API_BASE}/user-profiles`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin':'*'
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({firstName, lastName, email, password})
+      body: JSON.stringify({ firstName, lastName, email, password })
     }).then(response => {
       if (!response.ok) {
 
-          throw new Error('An error has occured: ' + response.statusText)
+        throw new Error('An error has occured: ' + response.statusText)
 
       } else {
         return response.json();
@@ -49,7 +48,7 @@ export default function Register() {
   }
 
   const token = localStorage.getItem('token');
-  
+
   if (token) {
     console.log('LOGOUT');
     localStorage.removeItem('token');
@@ -61,7 +60,7 @@ export default function Register() {
   } else {
     return (
       <div className="register">
-       
+
         <button className="registerLoginButton" onClick={() => window.location.pathname = '/login'}>Login</button>
         <form className="registerForm" onSubmit={HandleSubmit}>
           <span className="registerTitle">Register</span>
@@ -71,7 +70,7 @@ export default function Register() {
               <span className="fa fa-user form-control-icon"></span>
               <input type="text" className="form-control"
                 pattern="[A-Za-z0-9_]{1,15}" required
-                placeholder="Enter your first name" id="firstName" name="firstName" autoFocus={true}/>
+                placeholder="Enter your first name" id="firstName" name="firstName" autoFocus={true} />
             </div>
 
             <div className="form-group">
@@ -79,7 +78,7 @@ export default function Register() {
               <span className="fa fa-user form-control-icon"></span>
               <input type="text" className="form-control"
                 pattern="[A-Za-z0-9_]{1,15}" required
-                placeholder="Enter your last name" id="lastName" name="lastName"  />
+                placeholder="Enter your last name" id="lastName" name="lastName" />
             </div>
 
             <div className="form-group">
@@ -89,7 +88,7 @@ export default function Register() {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 placeholder="Enter your email" id="email" name="email" />
             </div>
-          
+
             <div className="form-group">
               <label>Password</label>
               <span className="fa fa-key form-control-icon"></span>
@@ -97,7 +96,7 @@ export default function Register() {
                 pattern=".{8,}" required
                 placeholder="Enter your password" id="password" name="password" />
             </div>
-          
+
 
             <div className="form-group">
               <label> Confirm Password</label>
@@ -107,13 +106,13 @@ export default function Register() {
             </div>
 
           </div>
-        
+
           <button className="registerButton" type="submit">Register</button>
 
 
         </form>
       </div>
-    
+
     )
   }
 }

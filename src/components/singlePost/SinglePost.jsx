@@ -1,27 +1,58 @@
 import { React, useState, useEffect } from "react";
 import "./singlePost.css"
+import UseToken from '../../useToken';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function SinglePost({ item }) {
-  let { title, description, dateCreated, imagePath } = item;
+  let { title, description, dateCreated, imagePath, postId } = item;
   const [img, setImg] = useState('');
   const [isLoading, setLoading] = useState(false);
-  const token = localStorage.getItem('token');
+  const { user } = UseToken();
+  const navigate = useNavigate();
 
-  
+
+  const handleDelete = async (e, id) => {
+    console.log(id);
+    if (id) {
+      fetch(`${process.env.REACT_APP_API_BASE}/posts/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': 'Bearer ' + user.token,
+          'Content-Type': 'application/json'
+        }
+      }).then(response => {
+        if (!response.ok) {
+          if (response.status === 401) {
+            throw new Error('An error has occured: Invalid email or password.')
+          }
+          else {
+            throw new Error('An error has occured: ' + response.statusText)
+          }
+        } else {
+          window.location.pathname = '/schoolclass';
+          //navigate('/schoolclass');
+        }
+      }).catch(error => {
+        alert(error);
+      })
+    }
+
+  }
+
   useEffect(() => {
     if (img) {
       setLoading(false);
     }
   }, [img]);
-  
-  
+
+
   useEffect(() => {
     if (imagePath) {
       fetch(`${process.env.REACT_APP_API_BASE}/files/${imagePath}`, {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer ' + token,
-          'Access-Control-Allow-Origin': '*',
+          'Authorization': 'Bearer ' + user.token,
           'Accept': 'application/json'
         }
       }).then(response => {
@@ -63,14 +94,14 @@ export default function SinglePost({ item }) {
           console.log(error);
           setLoading(false);
         })
-        
+
     }
-  
-  else { 
-    setImg(require('./../../images/' + 'kids_handsup.jpg'));
+
+    else {
+      setImg(require('./../../images/kids_handsup.jpg'));
     }
   }
-  , [imagePath])
+    , [imagePath, user.token])
 
 
   if (isLoading) {
@@ -78,7 +109,7 @@ export default function SinglePost({ item }) {
   } else {
     return (
       <div className="schoolClassItem">
-        <img className="schoolClassImg" src={img} />
+        <img className="schoolClassImg" src={img} alt="" />
         <div className="schoolClassPostInfo">
           <div className="text-uppercase schoolClassPostTitle">{title}</div>
           <div className="schoolClassPostText">
@@ -86,8 +117,9 @@ export default function SinglePost({ item }) {
           </div>
         </div>
         <div className="schoolClassPostDate">
-          <span className="skcPostDate">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span>
+          <span className="skcPostDate">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span> {(user?.role === 'admin' || user?.role === 'teacher') ? <i className="singlePostIcon fa-solid fa-trash" onClick={(e) => handleDelete(e, postId)}></i> : ''}
         </div>
+
       </div>
     )
   }

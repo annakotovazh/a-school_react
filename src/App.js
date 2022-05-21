@@ -1,6 +1,5 @@
 import Home from "./pages/home/Home";
 import TopBar from "./components/topbar/TopBar";
-import Single from "./pages/single/Single";
 import AddPost from "./pages/addPost/AddPost";
 import Settings from "./pages/settings/Settings";
 import { useEffect, useState } from 'react';
@@ -13,18 +12,18 @@ import UseToken from './useToken';
 
 
 function App() {
- 
 
-const [isDarkMode, setDarkMode] = useState('false')
+
+  const [isDarkMode, setDarkMode] = useState('false')
 
   useEffect(() => {
     let darkTheme = localStorage.getItem('DarkMode')
-    if(darkTheme === 'true'){
+    if (darkTheme === 'true') {
       setDarkMode(darkTheme)
     } else {
       setDarkMode('false')
     }
-  },[])
+  }, [])
 
   useEffect(() => {
     let theme = document.getElementsByTagName('link')[1];
@@ -34,32 +33,30 @@ const [isDarkMode, setDarkMode] = useState('false')
     } else {
       theme.setAttribute('href', './css/bootstrap.min.css');
     }
-  },[isDarkMode])
+  }, [isDarkMode])
 
-  function onThemeSwitch(e){
-    console.log(e.target.checked)
-    if(e.target.checked){
+  function onThemeSwitch(e) {
+    if (e.target.checked) {
       setDarkMode('true')
       localStorage.setItem('DarkMode', 'true')
     } else {
       localStorage.setItem('DarkMode', 'false')
 
-      console.log('setting to false')
       setDarkMode('false')
     }
 
 
   }
 
-  const { token, setToken } = UseToken();
+  const { user, setToken } = UseToken();
 
   console.log(window.location.pathname);
 
-  if (window.location.pathname == '/register') {
+  if (window.location.pathname === '/register') {
     return <Register />
   }
 
-  if (!token) {
+  if (!user) {
     return <Login setToken={setToken} />
   }
 
@@ -68,18 +65,18 @@ const [isDarkMode, setDarkMode] = useState('false')
 
       <TopBar SwitchTheme={onThemeSwitch} />
       <div className="AppBody">
-         <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login setToken={setToken}/>} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/addpost' element={<AddPost />} />
-            <Route path='/schoolclass' element={<SchoolClass />} />
-            <Route path='/settings' element={<Settings />} />
-          </Routes>
-        </div>
-
-      <Footer/>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login setToken={setToken} />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/addpost' element={<AddPost />} />
+          <Route path='/schoolclass' element={<SchoolClass />} />
+          <Route path='/settings' element={<Settings />} />
+        </Routes>
       </div>
+
+      <Footer />
+    </div>
   );
 }
 

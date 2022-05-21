@@ -1,49 +1,49 @@
-import {React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import Spinner from "../../components/helpercomponents/Spinner";
 import "./settings.css";
+import UseToken from '../../useToken';
+
 
 
 export default function Settings() {
-  const settingsPPImg = require('./../../images/' + 'teacher.jpg');
-  
-  const [isLoading, setLoading] = useState(false);
-const [userProfile, setUserProfile] = useState([]);
-  const token = localStorage.getItem('token');
-  const user = JSON.parse(localStorage.getItem('user'));
+  const settingsPPImg = require('./../../images/teacher.jpg');
 
-  if (!user?.id) { 
+  const [isLoading, setLoading] = useState(false);
+  const [userProfile, setUserProfile] = useState([]);
+  const { user } = UseToken();
+
+  if (!user?.id) {
     window.location.pathname = '/';;
   }
 
-useEffect(() => {
-  if(userProfile !== []){
+  useEffect(() => {
+    if (userProfile !== []) {
       setLoading(false);
-  }
-}, [userProfile])
-  
-useEffect(() => {
-  setLoading(true);
-  fetch(`${process.env.REACT_APP_API_BASE}/user-profiles/${user.id}`, {
+    }
+  }, [userProfile])
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`${process.env.REACT_APP_API_BASE}/user-profiles/${user.id}`, {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer ' + token,
-        'Access-Control-Allow-Origin': '*',
-          'Accept': 'application/json'
+        'Authorization': 'Bearer ' + user.token,
+        'Accept': 'application/json'
       }
-  }).then(response => {
-      if(!response.ok){
-          throw new Error('The following error has occured: ' + response.statusText)
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('The following error has occured: ' + response.statusText)
       } else {
-          return response.json()
+        return response.json()
       }
-  }).then(data => {
-    setUserProfile(data);
-  }).catch(error => {
+    }).then(data => {
+      setUserProfile(data);
+    }).catch(error => {
       alert(error)
       setLoading(false)
-  })
-}, [])
-  
+    })
+  }, [user.token, user.id])
+
   if (isLoading) {
     return <Spinner />
   } else {
@@ -52,7 +52,7 @@ useEffect(() => {
         <div className="settingsWrapper">
           <div className="settingsTitle">
             <span className="settingsUpdateTitle">Update Your Account</span>
-                  
+
           </div>
           <form className="settingsForm">
             <div className="settingsPP">
@@ -62,7 +62,7 @@ useEffect(() => {
               </label>
               <input type="file" id="fileInput" style={{ display: "none" }}></input>
             </div>
-                 
+
             <div className="form-group">
               <label>First Name</label>
               <span className="fa fa-user form-control-icon"></span>
@@ -86,7 +86,7 @@ useEffect(() => {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 placeholder="Enter your email" id="email" name="email" value={userProfile.email} />
             </div>
-          
+
             <div className="form-group">
               <label>Password</label>
               <span className="fa fa-key form-control-icon"></span>
@@ -96,9 +96,9 @@ useEffect(() => {
             </div>
             <button className="settingsSubmit" type="submit">Update</button>
 
-                  
+
           </form>
-          
+
         </div>
       </div>
     )
