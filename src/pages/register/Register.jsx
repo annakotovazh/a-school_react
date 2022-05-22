@@ -3,6 +3,14 @@ import Spinner from "../../components/helpercomponents/Spinner";
 import "./register.css"
 
 export default function Register() {
+  let accessRole = 3;
+
+  const onValueChange = (e, val) => {
+    accessRole = val;
+
+    console.log(accessRole);
+  }
+
   const [isLoading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -27,7 +35,7 @@ export default function Register() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ firstName, lastName, email, password })
+      body: JSON.stringify({ firstName, lastName, email, password, accessRole })
     }).then(response => {
       if (!response.ok) {
 
@@ -87,6 +95,24 @@ export default function Register() {
               <input type="text" className="form-control" required
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 placeholder="Enter your email" id="email" name="email" />
+            </div>
+
+            <div className="form-group">
+              <label>Role</label>
+              <div className="form-check">
+                <input className="form-check-input" type="radio" value="2" name="accessRole" id="accessRole1"
+                  onClick={(e) => onValueChange(e, 2)}></input>
+                <label className="form-check-label" htmlFor="accessRole1">
+                  Teacher
+                </label>
+              </div>
+              <div className="form-check">
+                <input className="form-check-input" type="radio" value="2" name="accessRole" id="accessRole2"
+                  onClick={(e) => onValueChange(e, 3)} checked={true}></input>
+                <label className="form-check-label" htmlFor="accessRole2">
+                  Parent
+                </label>
+              </div>
             </div>
 
             <div className="form-group">

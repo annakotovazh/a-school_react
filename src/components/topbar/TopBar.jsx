@@ -27,17 +27,17 @@ export default function topbar({ SwitchTheme }) {
                 <Link to='/schoolclass' className="nav-link">Class</Link>
               </li>
 
-              {/*<li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Class
-          </a>
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a className="dropdown-item" href="#">Prep</a></li>
-            <li><a className="dropdown-item" href="#">Year 1</a></li>
-            <li><a className="dropdown-item" href="#">Year 2</a></li>
-            <li><a className="dropdown-item" href="#">Year 3</a></li>
-          </ul>
-  </li>*/}
+              {(user?.role === 'admin') ?
+                <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Andmin Panel
+                  </a>
+                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <Link to='/announcements' className="nav-link">Announcements</Link>
+                    <Link to='/users' className="nav-link">Users</Link>
+                  </ul>
+                </li> : ''}
+
 
               <li>
                 <div className="form-check form-switch">

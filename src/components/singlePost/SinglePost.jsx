@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import "./singlePost.css"
 import UseToken from '../../useToken';
-import { useNavigate } from 'react-router-dom';
 
 
 export default function SinglePost({ item }) {
@@ -9,8 +8,6 @@ export default function SinglePost({ item }) {
   const [img, setImg] = useState('');
   const [isLoading, setLoading] = useState(false);
   const { user } = UseToken();
-  const navigate = useNavigate();
-
 
   const handleDelete = async (e, id) => {
     if (window.confirm('Delete post?')) {
@@ -23,12 +20,7 @@ export default function SinglePost({ item }) {
           }
         }).then(response => {
           if (!response.ok) {
-            if (response.status === 401) {
-              throw new Error('An error has occured: Invalid email or password.')
-            }
-            else {
-              throw new Error('An error has occured: ' + response.statusText)
-            }
+            throw new Error('An error has occured: ' + response.statusText)
           } else {
             window.location.pathname = '/schoolclass';
             //navigate('/schoolclass');

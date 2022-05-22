@@ -1,26 +1,25 @@
 import { React, useState, useEffect } from "react";
-import "./announcements.css";
+import "./users.css";
 import Spinner from "../../components/helpercomponents/Spinner";
-import SingleAnnouncement from "../singleAnnouncement/SingleAnnouncement";
+import SingleUser from "../../components/singleUser/SingleUser";
 import UseToken from '../../useToken';
 
 
-export default function Announcements() {
+export default function Users() {
 
   const [isLoading, setLoading] = useState(false);
-  const [announcements, setAnnouncements] = useState([]);
+  const [posts, setPosts] = useState([]);
   const { user } = UseToken();
 
-
   useEffect(() => {
-    if (announcements !== []) {
+    if (posts !== []) {
       setLoading(false);
     }
-  }, [announcements])
+  }, [posts])
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${process.env.REACT_APP_API_BASE}/announcements?filter={"where":{"isActive":true},"order":"announcementId desc"}`, {
+    fetch(`${process.env.REACT_APP_API_BASE}/user-profiles?filter={"include":[{"relation":"role"}]}`, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + user.token,
@@ -33,7 +32,7 @@ export default function Announcements() {
         return response.json()
       }
     }).then(data => {
-      setAnnouncements(data);
+      setPosts(data);
     }).catch(error => {
       alert(error)
       setLoading(false)
@@ -44,15 +43,14 @@ export default function Announcements() {
     return <Spinner />
   } else {
     return (
-      <div className="announcements">
+      <div className="user">
 
-        {announcements.map((announcement, i) => (
-          <SingleAnnouncement key={i} item={announcement} />
+        {posts.map((post, i) => (
+          <SingleUser key={i} item={post} />
         ))}
 
-        {(user?.role === 'admin') ? <button className="addAnnouncementButton" onClick={() => window.location.pathname = '/addannouncement'}>Add Announcement</button> : ''}
+
       </div>
     )
   }
 }
-

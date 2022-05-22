@@ -9,6 +9,9 @@ import SchoolClass from "./pages/schoolClass/SchoolClass";
 import Footer from "./components/footer/Footer";
 import { Routes, Route } from 'react-router-dom'
 import UseToken from './useToken';
+import Announcements from "./components/announcements/Announcements";
+import AddAnnouncement from "./pages/addAnnouncement/AddAnnouncement";
+import Users from "./pages/users/Users";
 
 
 function App() {
@@ -72,6 +75,9 @@ function App() {
           <Route path='/addpost' element={<AddPost />} />
           <Route path='/schoolclass' element={<SchoolClass />} />
           <Route path='/settings' element={<Settings />} />
+          <Route path='/announcements' element={<Announcements />} />
+          <Route path='/addannouncement' element={<AddAnnouncement />} />
+          <Route path='/users' element={<Users />} />
         </Routes>
       </div>
 
