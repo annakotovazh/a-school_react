@@ -45,7 +45,7 @@ export default function SingleAnnouncement({ item }) {
 
       </div>
       <div className="postItem">
-        <span className="sidebarTitle">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span> {(user?.role === 'admin') ? <i className="singlePostIcon fa-solid fa-trash" onClick={(e) => handleDelete(e, announcementId)}></i> : ''}
+        <span className="sidebarTitle">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span> {(user?.role === 'admin') ? <i className="singlePostIcon fa-regular fa-trash-can" onClick={(e) => handleDelete(e, announcementId)}></i> : ''}
       </div>
     </div>
   )

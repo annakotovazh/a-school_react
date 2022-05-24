@@ -63,12 +63,18 @@
     cursor: pointer;
 }
 
-.addAnnouncementButton {
-    background-color: orange;
-    cursor: pointer;
-    padding: 5px;
-    color: white;
-    border: 0.5px solid;
-    border-color: rgb(158, 156, 156);
-    border-radius: 5px;
+
+.addAnnouncementButton{
+   width: 80%;
+    align-items: center;
+border-radius: 7px;
+color: white;
+background-color: rgb(3, 143, 26);
+padding: 10px;
+margin-top: 20px;
+margin-left: 35px;
+cursor: pointer;
+border: none;
+display: flex;
+justify-content: center;
 }
