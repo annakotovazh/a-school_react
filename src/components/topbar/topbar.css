@@ -59,3 +59,16 @@
      cursor: pointer;
      margin-left: 15px;
  }
+
+ .btn-primary-topbar {
+    color: rgb(9 91 5);
+    background-color: #fffffffe;
+    border-color: #047b04;
+    border: solid 0.5px;
+    border-radius: 25px;
+    font-size: 10px;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    margin-left: 290px;
+}

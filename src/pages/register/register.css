@@ -69,6 +69,7 @@
 
 .registerTitle{
     font-size: 40px;
+    margin-top: 100px;
 }
 .registerForm{
    width: 80%;
@@ -80,13 +81,7 @@
 .registerForm >label{
     margin: 10px 0;
 }
-/*.registerInput{
-    padding: 10px;
-    background-color:white;
-    border-radius:7px;
-    border:1px solid;
-    border-color: grey;
-}*/
+
 .registerButton{
     padding: 10px;
     margin-top: 20px;
@@ -98,16 +93,25 @@
     color: white;
 }
 .registerLoginButton{
-position: absolute;
-width: 70px;
-top:100px;
-right: 20px;
-background-color:orange;
-cursor: pointer;
-padding:10px;
-color:white;
-border:0.5px solid;
-border-color: rgb(158, 156, 156);
-border-radius:5px;
+    color:white;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color:rgb(240, 171, 93);
+    border-radius:7px;
+    border:0.5px solid;
+    border-color: rgb(167, 165, 165); 
    
+}
+.btn-primary {
+    color: rgb(9 91 5);
+    background-color: #fffffffe;
+    border-color: #047b04;
+    border: solid 0.5px;
+    border-radius: 25px;
+    font-size: 10px;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    margin-left: 140px;
 }

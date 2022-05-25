@@ -61,7 +61,7 @@ export default function Login({ setToken }) {
   } else {
     return (
       <div className="login">
-        <button className="loginRegisterButton" onClick={() => window.location.pathname = '/register'}>Register</button>
+       
         <form className="loginForm" onSubmit={handleSubmit}>
           <span className="loginTitle">Login</span>
           <div className="main">
@@ -84,6 +84,7 @@ export default function Login({ setToken }) {
           </div>
 
           <button className="loginButton" type="submit">Login</button>
+          <button className="loginRegisterButton" onClick={() => window.location.pathname = '/register'}>Register</button>
 
         </form>
 
