@@ -1,33 +1,32 @@
-# Getting Started with Create React App
+# A-SCHOOL App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the front-end designed for use with the back-end https://github.com/annakotovazh/a-school-api.git
 
-## Available Scripts
+About A-School App: A-School is created to help share useful information about the educational process at school (or in another educational institution), post photos, homework, timetables and other useful information related to the school.
 
-In the project directory, you can run:
+This guide assumes that you have an IDE installed on your computer, such as Visual Studio Code or similar, and Node/node.js. These instructions should work on most common operating systems.
 
-### `npm start`
+## Instructions for setup
 
-Runs the app in the development mode.\
-Open [http://localhost:9000](http://localhost:9000) to view it in your browser.
+1. Clone repository or download files
+2. Open the folder in your IDE of choice and open a terminal
+3. cd into the app's folder
+4. To install the dependencies run command `npm install` 
+5. Make sure that you have your API running
+6. API source code can be found here: https://github.com/annakotovazh/a-school-api.git
+7. Make copy of .env.example rename it to .env
+8. Update .env file, set REACT_APP_API_BASE as URL of your API
+9. Run command `npm start`
+### To build Application for production mode at http://localhost:3000
+10. Run command `npm build`
+11. Run command `serve -s build`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
 
