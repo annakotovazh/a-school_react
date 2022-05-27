@@ -3,13 +3,27 @@ import "./users.css";
 import Spinner from "../../components/helpercomponents/Spinner";
 import SingleUser from "../../components/singleUser/SingleUser";
 import UseToken from '../../useToken';
+//import { useNavigate } from 'react-router-dom';
 
+export default function Users({ ip }) {
 
-export default function Users() {
-
+  
   const [isLoading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const { user } = UseToken();
+  //const navigate = useNavigate();
+
+  console.log({ ip });
+
+  if (process.env.REACT_APP_IP_WHITELIST) {
+    const whitelist = process.env.REACT_APP_IP_WHITELIST.split(',');
+    if (!whitelist.includes(ip)) { 
+      alert(`Your IP [${ip}] is not in the whitelist!`);
+      window.location.pathname = '/';
+      
+      //navigate('/');
+    }
+  }
 
   useEffect(() => {
     if (posts !== []) {

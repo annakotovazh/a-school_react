@@ -42,7 +42,7 @@ export default function SingleUser({ item }) {
         </div>
       </div>
       <div className="schoolClassPostDate">
-        <span className="skcPostDate">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span> {(isActive) ? <button className="btn btn-primary" onClick={(e) => handleEdit(e, userProfileId, false)}>Disable</button> : <button className="btn btn-secondary" onClick={(e) => handleEdit(e, userProfileId, true)}>Enable</button>}
+        <span className="skcPostDate">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span> {(isActive) ? <button className="btn btn-user-disable" onClick={(e) => handleEdit(e, userProfileId, false)}>Disable</button> : <button className="btn btn-user-enable" onClick={(e) => handleEdit(e, userProfileId, true)}>Enable</button>}
       </div>
 
     </div>

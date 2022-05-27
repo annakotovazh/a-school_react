@@ -56,15 +56,18 @@ export default function topbar({ SwitchTheme }) {
       </nav>
       <div className="topRight" >
         <img className="topImg" src={topImg} alt="user icon" />
-        <button type="button" className="btn btn-primary-topbar" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Help">
+        <button type="button" className="btn btn-primary-topbar"
+          data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Help">
   ?
 </button>
-        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="exampleModal" tabIndex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
         <h5 className="modal-title" id="exampleModalLabel">About A-School App</h5>
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" className="btn-close" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
       </div>
       <div className="modal-body">
       A-School will help you: <br></br>

@@ -31,3 +31,24 @@
     cursor: pointer;
     color: rgb(247, 118, 6);
 }
+
+.btn-user-disable{
+    color: rgb(249 253 249);
+    background-color: #198754;
+    border-color: #047b04;
+    font-size: 15px;
+    padding: 0;
+    margin-left: 277px;
+    width: 64px;
+    height: 29px;
+}
+
+.btn-user-enable{
+    margin-left: 140px;
+    width: 75px;
+}
+.skcPostDate{
+    font-size: 12px;
+    margin-left: 50px;
+}
+

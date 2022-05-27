@@ -5,11 +5,21 @@ import Spinner from "../../components/helpercomponents/Spinner";
 import UseToken from '../../useToken';
 
 
-export default function AddAnnouncement() {
+export default function AddAnnouncement({ ip }) {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [post, setPost] = useState(null);
   const { user } = UseToken();
+
+  if (process.env.REACT_APP_IP_WHITELIST) {
+    const whitelist = process.env.REACT_APP_IP_WHITELIST.split(',');
+    if (!whitelist.includes(ip)) { 
+      alert(`Your IP [${ip}] is not in the whitelist!`);
+      window.location.pathname = '/';
+      
+      //navigate('/');
+    }
+  }
 
   useEffect(() => {
     if (post !== null) {

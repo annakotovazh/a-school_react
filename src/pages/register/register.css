@@ -1,8 +1,23 @@
 
-.main {
-    width: 100%;
-    margin: 50px auto;
+
+.register{
+    
+        width: 100%;
+        height: calc(100vh);
+        align-items:center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: linear-gradient(rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.5)
+        ),
+         url(./../../images/kids.jpg);
+        background-size: cover;
+        
+
 }
+
+
 .form-group {
     padding: 5px;
 }
@@ -24,15 +39,7 @@
     color: #aaa;
 }
 
-.register{
-    width: 100%;
-    height: calc(100vh - 100px);
-    align-items:center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  
-}
+
 
 .topLeft, .topRight {
     margin-top: 20px;
@@ -54,11 +61,11 @@
     background-color: #0c0c0c;
     border-color: #0fac07;
 }
-    .btn-primary {
+   /* .btn-primary {
         color: #fff;
         background-color: #03790d;
         border-color: #03790d;
-    }
+    }*/
     .btn-outline-success {
         color: #039e10;
         border-color: #039e10;
@@ -69,7 +76,7 @@
 
 .registerTitle{
     font-size: 40px;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 .registerForm{
    width: 80%;
@@ -103,7 +110,7 @@
     border-color: rgb(167, 165, 165); 
    
 }
-.btn-primary {
+.btn-help {
     color: rgb(9 91 5);
     background-color: #fffffffe;
     border-color: #047b04;
@@ -114,4 +121,5 @@
     height: 15px;
     padding: 0;
     margin-left: 140px;
+
 }

@@ -32,7 +32,7 @@ export default function AddPost() {
 
     await new Promise(f => setTimeout(f, 500));
 
-    e.preventDefault();
+
     const res = await fetch(`${process.env.REACT_APP_API_BASE}/files`, {
       method: 'POST',
       headers: {
@@ -42,7 +42,7 @@ export default function AddPost() {
     });
     const body = await res.json();
 
-    console.log(body);
+
 
     if (body.files && body.files.length > 0) {
       imagePath = body.files[0].originalname;

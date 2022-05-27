@@ -74,7 +74,7 @@ export default function Register() {
 
 
 
-<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -88,7 +88,7 @@ export default function Register() {
   </div>
 </div>
         <form className="registerForm" onSubmit={HandleSubmit}>
-          <span className="registerTitle">Register <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Help">
+          <span className="registerTitle">Register <button type="button" className="btn btn-help" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Help">
   ?
 </button></span>
           <div className="main">
@@ -116,16 +116,17 @@ export default function Register() {
                 placeholder="Enter your email" id="email" name="email" />
             </div>
 
+
             <div className="form-group">
-              <label>Role</label>
-              <div className="form-check">
+
+              <div className="form-check form-check-inline">
                 <input className="form-check-input" type="radio" value="2" name="accessRole" id="accessRole1"
                   onClick={(e) => onValueChange(e, 2)}></input>
                 <label className="form-check-label" htmlFor="accessRole1">
                   Teacher
                 </label>
               </div>
-              <div className="form-check">
+              <div className="form-check form-check-inline">
                 <input className="form-check-input" type="radio" value="2" name="accessRole" id="accessRole2"
                   onClick={(e) => onValueChange(e, 3)} checked={true}></input>
                 <label className="form-check-label" htmlFor="accessRole2">
