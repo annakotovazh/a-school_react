@@ -43,9 +43,14 @@
     height: 29px;
 }
 
-.btn-user-enable{
-    margin-left: 140px;
-    width: 75px;
+.btn-user-enable {
+    margin-left: 277px;
+    width: 64px;
+    height: 30px;
+    padding: 0;
+    font-size: 15px;
+    background-color: #ef7a0ae0
+
 }
 .skcPostDate{
     font-size: 12px;

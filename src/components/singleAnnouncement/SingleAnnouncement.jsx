@@ -1,5 +1,6 @@
 import "./singleAnnouncement.css"
 import UseToken from '../../useToken';
+import AddAnnouncement from "../../pages/addAnnouncement/AddAnnouncement";
 
 export default function SingleAnnouncement({ item }) {
   const { user } = UseToken();
@@ -28,26 +29,31 @@ export default function SingleAnnouncement({ item }) {
     }
   }
 
-  return (
-    <div className="post">
-      <div className="postItem">
-        <span className="postTitle">ANNOUNCEMENTS</span>
-      </div>
-      <div className="postItem">
-        <img className="postImg" src={postImg} alt="woman with megafone" />
-        <div className="postInfo">
-          <div className="text-uppercase postTitle">{title}</div>
-          <div className="postText">
 
-            <p>{description}</p>
-          </div>
+    return (
+      <div className="post">
+        <div className="postItem">
+          <span className="postTitle">ANNOUNCEMENTS</span>
         </div>
+        <div className="postItem">
+          <img className="postImg" src={postImg} alt="woman with megafone" />
+          <div className="postInfo">
+            <div className="text-uppercase postTitle">{title}</div>
+            <div className="postText">
 
+              <p>{description}</p>
+            </div>
+          </div>
+
+        </div>
+        <div className="postItem">
+          <span className="sidebarTitle">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span>
+          <div>{(user?.role === 'admin') ? <i className="singlePostIcon fa-regular fa-trash-can" onClick={(e) => handleDelete(e, announcementId)}></i> : ''}
+            {(user?.role === 'admin') ? <i className="singlePostIcon fa-regular fa-pen-to-square" onClick={() => window.location.pathname = `/addannouncement/${announcementId}`}></i> : ''}
+            </div>
+        </div>
       </div>
-      <div className="postItem">
-        <span className="sidebarTitle">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span> {(user?.role === 'admin') ? <i className="singlePostIcon fa-regular fa-trash-can" onClick={(e) => handleDelete(e, announcementId)}></i> : ''}
-      </div>
-    </div>
-  )
+    )
+
 }
 

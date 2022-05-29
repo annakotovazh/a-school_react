@@ -11,19 +11,6 @@ export default function Users({ ip }) {
   const [isLoading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const { user } = UseToken();
-  //const navigate = useNavigate();
-
-  console.log({ ip });
-
-  if (process.env.REACT_APP_IP_WHITELIST) {
-    const whitelist = process.env.REACT_APP_IP_WHITELIST.split(',');
-    if (!whitelist.includes(ip)) { 
-      alert(`Your IP [${ip}] is not in the whitelist!`);
-      window.location.pathname = '/';
-      
-      //navigate('/');
-    }
-  }
 
   useEffect(() => {
     if (posts !== []) {

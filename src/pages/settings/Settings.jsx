@@ -68,7 +68,7 @@ export default function Settings() {
               <span className="fa fa-user form-control-icon"></span>
               <input type="text" className="form-control"
                 pattern="[A-Za-z0-9_]{1,15}" required
-                placeholder="Enter your first name" id="firstName" name="firstName" autoFocus={true} value={userProfile.firstName} />
+                placeholder="Enter your first name" id="firstName" name="firstName" autoFocus={true} defaultValue={userProfile.firstName} />
             </div>
 
             <div className="form-group">
@@ -76,7 +76,7 @@ export default function Settings() {
               <span className="fa fa-user form-control-icon"></span>
               <input type="text" className="form-control"
                 pattern="[A-Za-z0-9_]{1,15}" required
-                placeholder="Enter your last name" id="lastName" name="lastName" value={userProfile.lastName} />
+                placeholder="Enter your last name" id="lastName" name="lastName" defaultValue={userProfile.lastName} />
             </div>
 
             <div className="form-group">
@@ -84,7 +84,7 @@ export default function Settings() {
               <span className="fa fa-envelope form-control-icon"></span>
               <input type="text" className="form-control" required
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                placeholder="Enter your email" id="email" name="email" value={userProfile.email} />
+                placeholder="Enter your email" id="email" name="email" defaultValue={userProfile.email} />
             </div>
 
             <div className="form-group">

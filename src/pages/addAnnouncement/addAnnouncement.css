@@ -52,11 +52,21 @@
 }
 
 .addSubmit {
-    position: absolute;
-    top: 20px;
-    right: 50px;
+
     color: rgb(255, 255, 255);
     background-color: rgb(3, 143, 26);
+    border-color: grey;
+    padding: 7px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btnCancel {
+
+    color: rgb(255, 255, 255);
+    background-color:rgb(240, 171, 93);
+    border-color: rgb(167, 165, 165);  
     padding: 7px;
     border: none;
     border-radius: 7px;

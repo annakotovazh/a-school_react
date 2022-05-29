@@ -15,21 +15,7 @@ import Users from "./pages/users/Users";
 
 
 function App() {
-  const [ip, setIP] = useState('');
-    //creating function to load ip address from the API
-    const getData = async () => {
-      const res = await fetch('https://geolocation-db.com/json/', { method: 'GET' });
-      const ips = await res.json();
-      setIP(ips.IPv4)
-    }
-    
-    useEffect( () => {
-      //passing getData method to the lifecycle method
-  
-      getData()
-  
-    }, [])
-  
+ 
 
   const [isDarkMode, setDarkMode] = useState('false')
 
@@ -46,9 +32,9 @@ function App() {
     let theme = document.getElementsByTagName('link')[1];
     console.log(isDarkMode)
     if (isDarkMode === 'true') {
-      theme.setAttribute('href', './css/bootstrap-night.min.css');
+      theme.setAttribute('href', '/css/bootstrap-night.min.css');
     } else {
-      theme.setAttribute('href', './css/bootstrap.min.css');
+      theme.setAttribute('href', '/css/bootstrap.min.css');
     }
   }, [isDarkMode])
 
@@ -89,9 +75,10 @@ function App() {
           <Route path='/addpost' element={<AddPost />} />
           <Route path='/schoolclass' element={<SchoolClass />} />
           <Route path='/settings' element={<Settings />} />
-          <Route path='/announcements' element={<Announcements ip={ip} />} />
-          <Route path='/addannouncement' element={<AddAnnouncement ip={ip} />} />
-          <Route path='/users' element={<Users ip={ip} />} />
+          <Route path='/announcements' element={<Announcements />} />
+          <Route path="/addannouncement/:id" element={<AddAnnouncement />} /> 
+          <Route path="/addannouncement" element={<AddAnnouncement />} /> 
+          <Route path='/users' element={<Users />} />
         </Routes>
       </div>
 
