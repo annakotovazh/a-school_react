@@ -109,7 +109,9 @@ export default function SinglePost({ item }) {
           </div>
         </div>
         <div className="schoolClassPostDate">
-          <span className="skcPostDate">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span> {(user?.role === 'admin' || user?.role === 'teacher') ? <i className="singlePostIcon fa-regular fa-trash-can" onClick={(e) => handleDelete(e, postId)}></i> : ''}
+          <span className="skcPostDate">Date: {(new Date(dateCreated).toLocaleDateString("en-AU"))}</span>
+          {(user?.role === 'admin' || user?.role === 'teacher') ? <i className="singlePostIcon fa-regular fa-trash-can" onClick={(e) => handleDelete(e, postId)}></i> : ''}
+          {(user?.role === 'admin' || user?.role === 'teacher') ? <i className="singlePostIcon fa-regular fa-pen-to-square" onClick={() => window.location.pathname = `/addpost/${postId}`}></i> : ''}
         </div>
 
       </div>

@@ -19,7 +19,7 @@ export default function SchoolClass() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${process.env.REACT_APP_API_BASE}/posts`, {
+    fetch(`${process.env.REACT_APP_API_BASE}/posts?filter={"order":"postId desc"}`, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + user.token,

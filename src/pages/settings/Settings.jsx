@@ -22,8 +22,7 @@ export default function Settings() {
     }
   }, [userProfile])
 
-  useEffect(() => {
-    setLoading(true);
+  function fetchUser() {
     fetch(`${process.env.REACT_APP_API_BASE}/user-profiles/${user.id}`, {
       method: 'GET',
       headers: {
@@ -42,7 +41,58 @@ export default function Settings() {
       alert(error)
       setLoading(false)
     })
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    fetchUser();
   }, [user.token, user.id])
+
+
+  const HandleSubmit = async e => {
+    e.preventDefault();
+    setLoading(true);
+
+    // input validation required
+    let firstName = e.target.firstName.value;
+    let lastName = e.target.lastName.value;
+    let email = e.target.email.value;
+    let password = e.target.password.value;
+
+    const url = `${process.env.REACT_APP_API_BASE}/user-profiles/${user.id}`;
+    const method = 'PATCH';
+    const body = { firstName, lastName, email };
+    if (password) { 
+      body.password = password;
+    }
+
+   
+    fetch(url, {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + user.token,
+      },
+      body: JSON.stringify(body)
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('An error has occured: ' + response.statusText)
+      } else {
+        if (response.status === 204) {
+          return '{}';
+        }
+        else {
+          return response.json();
+        }
+      }
+    }).then(data => {
+      fetchUser();
+    }).catch(error => {
+      setLoading(false)
+      alert(error);
+    });
+
+  }
 
   if (isLoading) {
     return <Spinner />
@@ -54,7 +104,7 @@ export default function Settings() {
             <span className="settingsUpdateTitle">Update Your Account</span>
 
           </div>
-          <form className="settingsForm">
+          <form className="settingsForm" onSubmit={HandleSubmit}>
             <div className="settingsPP">
               <img className="settingsPPImg" src={settingsPPImg} alt="teacher" />
               <label htmlFor="fileInput">
@@ -88,14 +138,13 @@ export default function Settings() {
             </div>
 
             <div className="form-group">
-              <label>Password</label>
+              <label>New Password</label>
               <span className="fa fa-key form-control-icon"></span>
               <input type="password" className="form-control"
-                pattern=".{8,}" required
+                pattern=".{8,}" 
                 placeholder="Enter your password" id="password" name="password" />
             </div>
             <button className="settingsSubmit" type="submit">Update</button>
-
 
           </form>
 

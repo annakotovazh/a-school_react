@@ -64,14 +64,15 @@ function App() {
   }
 
   return (
-    <div className="App d-flex flex-column min-vh-100">
+    <div className="d-flex flex-column min-vh-100  overflow-auto">
 
       <TopBar SwitchTheme={onThemeSwitch} />
-      <div className="AppBody">
+  
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login setToken={setToken} />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/addpost/:id' element={<AddPost />} />
           <Route path='/addpost' element={<AddPost />} />
           <Route path='/schoolclass' element={<SchoolClass />} />
           <Route path='/settings' element={<Settings />} />
@@ -80,7 +81,7 @@ function App() {
           <Route path="/addannouncement" element={<AddAnnouncement />} /> 
           <Route path='/users' element={<Users />} />
         </Routes>
-      </div>
+
 
       <Footer />
     </div>

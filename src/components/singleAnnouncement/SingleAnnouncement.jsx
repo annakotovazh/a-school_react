@@ -23,7 +23,7 @@ export default function SingleAnnouncement({ item }) {
             window.location.pathname = '/announcements';
           }
         }).catch(error => {
-          alert(error);
+          alert('An error has occured: ' + error);
         })
       }
     }

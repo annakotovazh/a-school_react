@@ -35,7 +35,7 @@ export default function Register() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ firstName, lastName, email, password, accessRole })
+      body: JSON.stringify({ firstName, lastName, email, password, roleId:accessRole })
     }).then(response => {
       if (!response.ok) {
 

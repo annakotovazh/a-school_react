@@ -38,13 +38,13 @@
     border-color: #047b04;
     font-size: 15px;
     padding: 0;
-    margin-left: 277px;
+    /*margin-left: 277px;*/
     width: 64px;
     height: 29px;
 }
 
 .btn-user-enable {
-    margin-left: 277px;
+    /*margin-left: 277px;*/
     width: 64px;
     height: 30px;
     padding: 0;

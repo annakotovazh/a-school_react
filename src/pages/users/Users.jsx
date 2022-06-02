@@ -44,14 +44,25 @@ export default function Users({ ip }) {
     return <Spinner />
   } else {
     return (
-      <div className="user">
+      <table class="table">
+      <thead>
+            <tr>
+          <th scope="col">Role</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col"> </th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
 
-        {posts.map((post, i) => (
-          <SingleUser key={i} item={post} />
-        ))}
+            {posts.map((post, i) => (
+              <SingleUser key={i} item={post} />
+            ))}
 
 
-      </div>
+    </tbody>
+    </table>
     )
   }
 }

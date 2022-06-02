@@ -10,7 +10,7 @@ export default function SingleUser({ item }) {
   const handleEdit = async (e, id, isActive) => {
     if (window.confirm(isActive ? 'Enable user?' : 'Disable user?')) {
       if (id) {
-        fetch(`${process.env.REACT_APP_API_BASE}/user-profiles/${id}`, {
+        fetch(`${process.env.REACT_APP_API_BASE}/user-profiles?where={"userProfileId":"${id}"}`, {
           method: 'PATCH',
           headers: {
             'Authorization': 'Bearer ' + user.token,
@@ -56,7 +56,19 @@ export default function SingleUser({ item }) {
 
 
   return (
-    <div className="schoolClassItem">
+   
+        <tr>
+      <th scope="row"><small>{role.roleName}</small></th>
+      <td><small>{firstName} {lastName}</small></td>
+      <td><small>{email}</small></td>
+      <td>{(isActive) ?
+          <button className="btn btn-user-disable" onClick={(e) => handleEdit(e, userProfileId, false)}>Disable</button> : <button className="btn btn-user-enable" onClick={(e) => handleEdit(e, userProfileId, true)}>Enable</button>}</td>
+<td><i className="singlePostIcon fa-regular fa-trash-can" onClick={(e) => handleDelete(e, userProfileId)}></i></td>
+        </tr>
+      
+    
+/*
+     <div className="schoolClassItem">
       <div className="schoolClassPostInfo">
         <div className="text-uppercase schoolClassPostTitle">{email} ({role.roleName})</div>
         <div className="schoolClassPostText">
@@ -70,6 +82,7 @@ export default function SingleUser({ item }) {
       </div>
 
     </div>
+    */
   )
 
 }

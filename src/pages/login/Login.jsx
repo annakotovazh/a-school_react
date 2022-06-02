@@ -16,6 +16,7 @@ export default function Login({ setToken }) {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
+    //just to show spiner (to be deleted)
     await new Promise(f => setTimeout(f, 500));
     fetch(`${process.env.REACT_APP_API_BASE}/user/login`, {
       method: 'POST',

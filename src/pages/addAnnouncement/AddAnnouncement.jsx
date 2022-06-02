@@ -61,8 +61,6 @@ export default function AddAnnouncement() {
     let title = e.target.txtTitle.value;
     let description = e.target.txtDescription.value;
 
-    await new Promise(f => setTimeout(f, 500));
-
     let url = `${process.env.REACT_APP_API_BASE}/announcements`;
     let method = 'POST';
 
