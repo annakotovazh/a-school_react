@@ -56,7 +56,16 @@ export default function AddPost() {
     e.preventDefault();
     setLoading(true)
 
-    // input validation required
+    // input validation
+    let img = e.target.files.value;
+    if (!img) {
+      setLoading(false)
+      alert('Image required');
+      return;
+    }
+
+
+
     let title = e.target.txtTitle.value;
     let description = e.target.txtDescription.value;
     let imagePath = '';
@@ -84,6 +93,7 @@ export default function AddPost() {
       imagePath = body.files[0].originalname;
       postBody.imagePath = imagePath;
     }
+
     fetch(url, {
       method: method,
       headers: {

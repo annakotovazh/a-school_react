@@ -45,7 +45,7 @@ export default function Register() {
         return response.json();
       }
     }).then(data => {
-      alert('Account has been created. Please login');
+      alert('Account has been created. Please login after confirmation');
       setUser(data);
     }).catch(error => {
       setLoading(false)
@@ -96,7 +96,7 @@ export default function Register() {
               <label>First Name</label>
               <span className="fa fa-user form-control-icon"></span>
               <input type="text" className="form-control"
-                pattern="[A-Za-z0-9_]{1,15}" required
+                pattern="[A-Za-z]{1,15}" required
                 placeholder="Enter your first name" id="firstName" name="firstName" autoFocus={true} />
             </div>
 
@@ -104,7 +104,7 @@ export default function Register() {
               <label>Last Name</label>
               <span className="fa fa-user form-control-icon"></span>
               <input type="text" className="form-control"
-                pattern="[A-Za-z0-9_]{1,15}" required
+                pattern="[A-Za-z]{1,15}" required
                 placeholder="Enter your last name" id="lastName" name="lastName" />
             </div>
 

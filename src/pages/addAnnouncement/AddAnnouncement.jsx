@@ -57,8 +57,16 @@ export default function AddAnnouncement() {
     e.preventDefault();
     setLoading(true);
 
+
+ 
+
     // input validation required
     let title = e.target.txtTitle.value;
+    if (!title) {
+      setLoading(false)
+      alert('Title required');
+      return;
+    }
     let description = e.target.txtDescription.value;
 
     let url = `${process.env.REACT_APP_API_BASE}/announcements`;
